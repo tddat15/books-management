@@ -35,6 +35,8 @@ To install this application in Docker, you need docker in your machine and run t
 
 ```bash
 $ docker-compose up -d --build
+
+$ docker-compose up
 ```
 
 Docker will help to install necessary dependencies and start the server on port 3000.
