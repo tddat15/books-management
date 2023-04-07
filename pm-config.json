@@ -1,0 +1,5 @@
+{
+  "script": "./dist/main.js",
+  "name": "book-management",
+  "watch": true
+}

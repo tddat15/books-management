@@ -1,0 +1,44 @@
+version: "3"
+services:
+  api:
+    restart: always
+    container_name: book-management
+    build: .
+    environment:
+      - API_PREFIX=book-management
+      - APP_PORT=3000
+      - APP_HOST=0.0.0.0
+      - ES_URL=http://db-es:9200
+    networks:
+      - book-management
+    ports:
+      - "3000:${APP_PORT}"
+  db-es:
+    container_name: db-es
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    volumes:
+      - ./bm_es:/usr/share/elasticsearch/data
+    networks:
+      - book-management
+    ports:
+      - 9200:9200
+  db-kibana:
+    container_name: db-kibana
+    image: docker.elastic.co/kibana/kibana:7.16.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://db-es:9200
+    networks:
+      - book-management
+    depends_on:
+      - db-es
+    ports:
+      - 5601:5601
+
+volumes:
+  bm_es:
+
+networks:
+  book-management:
