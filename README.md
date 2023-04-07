@@ -8,10 +8,10 @@ An application used to manage books, using NestJS platform, Elasticsearch databa
 
 ## Version of platform and library
 
-node: v14.20.0
-nestjs: 9.3.12
-elasticsearch: v7.16.0
-fastify: 4.15.0
+- node: v14.20.0
+- nestjs: 9.3.12
+- elasticsearch: v7.16.0
+- fastify: 4.15.0
 
 ## Installation and run on local machine
 
